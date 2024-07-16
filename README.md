@@ -3,9 +3,10 @@
 
 ## 设置
 ```lua
+-- 基本参数
 vim.g.vim_localai_settings = {
   urls = {
-    completions = "http://localhost:5000/v1/completions", -- 网址
+    completions = "http://localhost:5000/v1/completions", -- 网址，以text-generator-webui提供的openai api为例
   },
   completions = {
     max_tokens= 64,
@@ -17,43 +18,22 @@ vim.g.vim_localai_settings = {
     stop = {"A:", "B:"} -- 遇到`A:`或`B:`时停止生成
   }
 }
+-- 按键绑定
+vim.api.nvim_set_keymap('n', '<S-CR>', ":AICompletions<CR>", { noremap = true, silent = false })
+vim.api.nvim_set_keymap('n', '<C-BS>', ":AIStopCompletions<CR>", { noremap = true, silent = false })
+vim.api.nvim_set_keymap('n', '<C-CR>', ":AIReCompletions<CR>", { noremap = true, silent = false })
+vim.api.nvim_set_keymap('n', '<S-BS>', ":AIClearCompletions<CR>", { noremap = true, silent = false })
 ```
-
-## python AI接口
-```mermaid
-flowchart LR
-    设定参数-->AI
-    上下文-->AI.completions-->续写内容
-```
-
-```mermaid
-classDiagram
-    class Config{
-        url
-        use_model
-        temperature
-        top_k
-        ...
-    }
-
-    class AI{
-        base_config
-        completions(text) -> Generator
-    }
-    AI <.. Config
-```
-#### Model
-模型类
-
-#### AI 
-提供一组方法(目前只实现completions了)用于方便使用。
 
 ## Vim Command
 ## AICompletions
 续写全文
-## StopAICompletions
+## AIStopCompletions
 停止续写全文
+## AIReCompletions
+重新进行续写
+## AIClearCompletions
+清除续写内容
 
 ## TODO
-- 重新生成
 - 高亮生成内容
