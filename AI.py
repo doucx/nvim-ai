@@ -28,6 +28,7 @@ class Model:
         # 用设置与提示词进行续写
         json_data = self.settings["completions"]
         json_data["prompt"] = prompt
+        json_data["stream"] = True
         stream = get_stream(self.settings["urls"]["completions"], json_data)
         for text in stream:
             # 可能的后续操作
