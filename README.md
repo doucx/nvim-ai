@@ -52,3 +52,4 @@ vim.api.nvim_set_keymap('n', '<S-BS>', ":AIClearCompletions<CR>", { noremap = tr
 ## TODO
 - 高亮生成内容
 - 加入openai token以使用openai的api（真正的）
+- 对仅部分内容进行处理
