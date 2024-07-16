@@ -1,1 +1,1 @@
-from .completions import VimLocalAI
+from .AI import VimLocalAI
