@@ -1,15 +1,20 @@
 # nvim-ai
 让neovim变成类似text-generator-webui的notebook
 
+## 前提
+有一个类似openai api的api，推荐使用text-generator-webui的openai api（因为在用这个）
+
 ## 安装
 ```bash
-cd ~/.config/nvim/rplugin/python3 # 如果没有请先创建
+cd ~/.config/nvim/rplugin/python3 # 或者任何别的python插件目录
 git clone https://github.com/doucx/nvim-ai.git
+pip install -r ./requirements.txt
 nvim
 ```
 然后运行`:UpdateRemotePlugins`，再重新启动`nvim`
 
 ## 设置
+将以下信息放在`init.lua`里。
 ```lua
 -- 基本参数
 vim.g.vim_localai_settings = {
@@ -46,3 +51,4 @@ vim.api.nvim_set_keymap('n', '<S-BS>', ":AIClearCompletions<CR>", { noremap = tr
 
 ## TODO
 - 高亮生成内容
+- 加入openai token以使用openai的api（真正的）
