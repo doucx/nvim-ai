@@ -13,6 +13,8 @@ vim.g.vim_localai_settings = {
     top_p = 0.9,
     top_k = 20,
     repetition_penalty = 1.15,
+
+    stop = {"A:", "B:"} -- 遇到`A:`或`B:`时停止生成
   }
 }
 ```
@@ -55,4 +57,3 @@ classDiagram
 ## TODO
 - 重新生成
 - 高亮生成内容
-- 遇到某些token时自动停止
