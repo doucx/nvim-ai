@@ -1,5 +1,13 @@
-# vim-localai
-用本地LLM为neovim提供加强的类
+# nvim-ai
+让neovim变成类似text-generator-webui的notebook
+
+## 安装
+```bash
+cd ~/.config/nvim/rplugin/python3 # 如果没有请先创建
+git clone https://github.com/doucx/nvim-ai.git
+nvim
+```
+然后运行`:UpdateRemotePlugins`，再重新启动`nvim`
 
 ## 设置
 ```lua
@@ -9,13 +17,14 @@ vim.g.vim_localai_settings = {
     completions = "http://localhost:5000/v1/completions", -- 网址，以text-generator-webui提供的openai api为例
   },
   completions = {
-    max_tokens= 64,
+    max_tokens = 64,
     temperature = 0.7,
     top_p = 0.9,
     top_k = 20,
-    repetition_penalty = 1.15,
+    -- stop = {"A:", "B:"} -- 遇到`A:`或`B:`时停止生成
 
-    stop = {"A:", "B:"} -- 遇到`A:`或`B:`时停止生成
+    -- 我不确定以下这些参数有没有用处
+    repetition_penalty = 1.15,
   }
 }
 -- 按键绑定
